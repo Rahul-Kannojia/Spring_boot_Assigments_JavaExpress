@@ -38,22 +38,22 @@ public class UserController {
 		User user = userService.fetchUserById(userId);
 		return user;
 	}
-	
+
 	@GetMapping
-	public List<User> getAllUsers(){
+	public List<User> getAllUsers() {
 		log.info("UserController :: getAllUsers");
 		return userService.fetchAllUsers();
 	}
-	
+
 	@PutMapping("{userId}")
 	public void updateUser(@PathVariable Long userId, @RequestBody User user) {
-		log.info("UserController :: updateUser {} {}", userId ,user.getUsername());
+		log.info("UserController :: updateUser {} {}", userId, user.getUsername());
 		userService.updateUser(userId, user);
 	}
 
 	@PatchMapping("{userId}")
 	public void updateUserPassword(@PathVariable Long userId, @RequestBody User user) {
-		log.info("UserController :: updateUserPassword {} {}", userId ,user.getUsername());
+		log.info("UserController :: updateUserPassword {} {}", userId, user.getUsername());
 		userService.updatePassword(userId, user);
 	}
 

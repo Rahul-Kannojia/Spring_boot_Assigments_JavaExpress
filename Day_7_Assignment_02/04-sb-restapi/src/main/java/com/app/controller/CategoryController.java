@@ -21,37 +21,37 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/v1/category")
 @Slf4j
 public class CategoryController {
-	
+
 	@Autowired
 	private CategoryService categoryService;
 
 	@PostMapping
 	public void createCategory(@RequestBody Category category) {
-		log.info("CategoryController :: createCategory {}",category.getName());
+		log.info("CategoryController :: createCategory {}", category.getName());
 		categoryService.createCategory(category);
 	}
-	
+
 	@GetMapping("{categoryId}")
 	public Category getCategoryById(@PathVariable Long categoryId) {
-		log.info("CategoryController :: getCategoryById {}",categoryId);
+		log.info("CategoryController :: getCategoryById {}", categoryId);
 		return categoryService.fetchCategoryById(categoryId);
 	}
-	
+
 	@GetMapping
-	public List<Category> getAllCategory(){
+	public List<Category> getAllCategory() {
 		log.info("CategoryController :: getAllCategory");
 		return categoryService.fetchAllCategory();
 	}
-	
+
 	@PutMapping("{categoryId}")
-	public void updateCategory(@PathVariable Long categoryId ,@RequestBody Category category) {
-		log.info("CategoryController :: updateCategory {} {}",categoryId,category.getName());
+	public void updateCategory(@PathVariable Long categoryId, @RequestBody Category category) {
+		log.info("CategoryController :: updateCategory {} {}", categoryId, category.getName());
 		categoryService.updateCategory(categoryId, category);
 	}
-	
+
 	@DeleteMapping("{categoryId}")
 	public void deleteCategory(@PathVariable Long categoryId) {
-		log.info("CategoryController :: deleteCategory {}",categoryId);
+		log.info("CategoryController :: deleteCategory {}", categoryId);
 		categoryService.deleteCategory(categoryId);
 	}
 }

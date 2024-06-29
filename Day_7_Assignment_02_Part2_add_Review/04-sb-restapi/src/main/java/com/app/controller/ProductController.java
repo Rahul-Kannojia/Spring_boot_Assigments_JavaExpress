@@ -22,28 +22,29 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	
+
 	@PostMapping
 	public void createProduct(@RequestBody Product product) {
-		log.info("ProductController ::createProduct {} ",product.getName());
+		log.info("ProductController ::createProduct {} ", product.getName());
 		productService.createProduct(product);
 	}
-	
+
 	@GetMapping("{pid}")
-	public Product fetchProduct(@PathVariable(name="pid") Long prodId) {
-		log.info("ProductController ::fetchProduct {} ",prodId);
+	public Product fetchProduct(@PathVariable(name = "pid") Long prodId) {
+		log.info("ProductController ::fetchProduct {} ", prodId);
 		return productService.fetchProductInfo(prodId);
 	}
-	
+
 	@PutMapping("{pid}")
-	public void updateProduct(@PathVariable(name="pid") Long prodId,@RequestBody Product inputProduct) {
-		log.info("ProductController ::updateProduct {} {} {} ",prodId,inputProduct.getCategory(),inputProduct.getName());
+	public void updateProduct(@PathVariable(name = "pid") Long prodId, @RequestBody Product inputProduct) {
+		log.info("ProductController ::updateProduct {} {} {} ", prodId, inputProduct.getCategory(),
+				inputProduct.getName());
 		productService.updateProduct(prodId, inputProduct);
 	}
-	
+
 	@DeleteMapping("{pid}")
-	public void deleteProduct(@PathVariable(name="pid") Long prodId) {
-		log.info("ProductController ::deleteProduct {} ",prodId);
+	public void deleteProduct(@PathVariable(name = "pid") Long prodId) {
+		log.info("ProductController ::deleteProduct {} ", prodId);
 		productService.deleteProduct(prodId);
 	}
 }
